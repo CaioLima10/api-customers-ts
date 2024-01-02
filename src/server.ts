@@ -6,6 +6,10 @@ const app = fastify({ logger: true })
 
 const PORT = process.env.PORT || 3333
 
+app.setErrorHandler(( error , request , reply ) => {
+    reply.code(400).send({ message: error.message })
+})
+
 const start = async () => {
 
     await app.register(routes)

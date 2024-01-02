@@ -1,6 +1,7 @@
 import { FastifyInstance , FastifyPluginOptions , FastifyRequest , FastifyReply } from "fastify";
 import CreateCustomersController from "./controllers/CreateCustomersController";
 import ListCustomersController from "./controllers/ListCustomersController";
+import DeleteCustomersController from "./controllers/DeleteCustomersController";
 
 
 export async function routes ( fastify: FastifyInstance , options: FastifyPluginOptions ){
@@ -11,5 +12,9 @@ export async function routes ( fastify: FastifyInstance , options: FastifyPlugin
 
     fastify.get("/customers", async ( request: FastifyRequest , reply: FastifyReply ) => {
         return new ListCustomersController().handle(request , reply)
+    })
+
+    fastify.delete("/customer", async (request: FastifyRequest , reply: FastifyReply) => {
+        return new DeleteCustomersController().handle(request , reply)
     })
 }

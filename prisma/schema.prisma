@@ -16,7 +16,7 @@ model Customers {
   email String
   status Boolean
   created_at DateTime? @default(now())
-  update_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
 
   @@map("customers")
 }
